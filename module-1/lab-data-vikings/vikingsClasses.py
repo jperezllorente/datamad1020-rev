@@ -58,7 +58,7 @@ class Saxon(Soldier):
     
     def receiveDamage(self,damage):
 
-        self.health = self.health - damage
+        super().receiveDamage(damage)
 
         if self.health > 0:
 
@@ -81,9 +81,9 @@ class War:
         self.vikingArmy = [] #aquí, para crear una lista vacía no bastaría con hacer vikingArmy = [], tenemos que identificarlo con selvikingArmy = []
         self.saxonArmy = []
     
-    def addViking(self,Viking): #creamos el método que nos genera los vikingos que van a formar parte del ejército. Lo mismo hacemos con los saxones
+    def addViking(self,viking): #creamos el método que nos genera los vikingos que van a formar parte del ejército. Lo mismo hacemos con los saxones
         
-        self.vikingArmy.append(Viking)
+        self.vikingArmy.append(viking)
 
     def addSaxon(self,Saxon):
         
@@ -98,9 +98,9 @@ class War:
         
         viking = random.choice(self.vikingArmy)
         
-        result = saxon.receiveDamage(viking.attack())
+        result = saxon.receiveDamage(viking.strength)
         
-        if result == "A saxon has died in combat"
+        if saxon.health <= 0:
 
             self.saxonArmy.remove(saxon)
 
@@ -114,9 +114,9 @@ class War:
         
         viking = random.choice(self.vikingArmy)
         
-        result = viking.receiveDamage(saxon.attack())
+        result = viking.receiveDamage(saxon.strength)
         
-        if result = f"{viking.name} has dies in act of combat"
+        if viking.health <= 0:
             
             self.vikingArmy.remove(viking)
 
